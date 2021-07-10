@@ -1,0 +1,22 @@
+const storage = multer.diskStorage({
+	destination : './public/uploads/',
+	filename : function(req, file, cb){
+		cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+	}
+});
+
+
+
+Here we are initializing a storage for multer.
+
+destination --- where the files will be stored.
+filename ---- for filename here we are passing a function with three paramereter:
+		1) req --- request
+		2) res --- response
+		3) cb ---- callback
+
+		in Callback Function
+		1) First parameter is for error -- null in our case
+		2) file.fieldname --- return the fieldname of the form 
+		3) Date.now() ---- return todays date
+		4) path.extname(filename) --- it returns the extension of the origial file
